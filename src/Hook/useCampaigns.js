@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify"; 
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_URL = "http://localhost:5001/api/campaigns"; 
+const API_URL = "https://backend-three-alpha-69.vercel.app/api/campaigns"; 
 
 const useCampaigns = () => {
   const [campaigns, setCampaigns] = useState([]);
