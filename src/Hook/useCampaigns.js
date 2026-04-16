@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify"; 
 import 'react-toastify/dist/ReactToastify.css';
-  https://backend-git-main-tanzeel0680-6266s-projects.vercel.app/
 // const API_URL = "https://backend-three-alpha-69.vercel.app/api/campaigns"; 
 const API_URL = "https://backend-git-main-tanzeel0680-6266s-projects.vercel.app/api/campaigns"; 
 
