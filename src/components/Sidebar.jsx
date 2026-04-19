@@ -16,8 +16,9 @@ export default function Sidebar() {
     <>
       {/* Mobile Button */}
       <button
-        className="md:hidden fixed top-4 left-4 z-50 bg-purple-600 text-white p-2 rounded-lg shadow-lg cursor-pointer"
+        className="md:hidden fixed top-3 left-3 z-50 bg-purple-600 text-white p-2 rounded-lg shadow-lg cursor-pointer"
         onClick={() => setOpen(true)}
+        aria-label="Open sidebar"
       >
         <Menu size={22} />
       </button>
@@ -32,9 +33,9 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-[#0f0f0f]
+        className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-[#0f0f0f] flex flex-col
         transform ${open ? "translate-x-0" : "-translate-x-full"}
-        md:translate-x-0 transition-transform duration-300 z-40 shadow-xl`}
+        md:translate-x-0 transition-transform duration-300 z-40 shadow-xl border-r border-gray-200 dark:border-gray-800`}
       >
         {/* Logo */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800">
@@ -80,6 +81,10 @@ export default function Sidebar() {
             );
           })}
         </nav>
+
+        <div className="mt-auto p-4 text-xs text-gray-400 border-t border-gray-200 dark:border-gray-800">
+          v1.0 Dashboard
+        </div>
       </aside>
     </>
   );

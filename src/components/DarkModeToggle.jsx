@@ -2,28 +2,38 @@ import React, { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
 const DarkModeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const getCurrentMode = () =>
+    document.documentElement.classList.contains("dark");
+  const [darkMode, setDarkMode] = useState(getCurrentMode);
 
   useEffect(() => {
-    const isDark = localStorage.getItem("darkMode") === "true";
+    const stored = localStorage.getItem("darkMode");
+    const isDark = stored === null ? getCurrentMode() : stored === "true";
+    document.documentElement.classList.toggle("dark", isDark);
     setDarkMode(isDark);
 
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    }
+    const syncMode = () => setDarkMode(getCurrentMode());
+    window.addEventListener("storage", syncMode);
+    window.addEventListener("theme-changed", syncMode);
+
+    return () => {
+      window.removeEventListener("storage", syncMode);
+      window.removeEventListener("theme-changed", syncMode);
+    };
   }, []);
 
   const toggleDarkMode = () => {
-    const newMode = !darkMode;
+    const newMode = !getCurrentMode();
     setDarkMode(newMode);
-    localStorage.setItem("darkMode", newMode);
-
+    localStorage.setItem("darkMode", String(newMode));
     document.documentElement.classList.toggle("dark", newMode);
+    window.dispatchEvent(new Event("theme-changed"));
   };
 
   return (
     <button
       onClick={toggleDarkMode}
+      aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
       className="relative flex items-center w-14 h-8 rounded-full p-1 
                  bg-gray-300 dark:bg-gray-800 transition-all duration-300 cursor-pointer"
     >

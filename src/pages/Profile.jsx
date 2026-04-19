@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Settings, Pencil } from "lucide-react";
 
 export default function Profile() {
@@ -7,10 +6,16 @@ export default function Profile() {
       <div className="relative bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-2xl rounded-3xl p-6 sm:p-8 w-full max-w-sm sm:max-w-md mx-auto text-center border border-gray-200 dark:border-gray-700 transition">
         {/* Top Actions */}
         <div className="absolute top-4 right-4 flex gap-2">
-          <button className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:scale-105 transition">
+          <button
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:scale-105 transition"
+            aria-label="Profile settings"
+          >
             <Settings size={18} />
           </button>
-          <button className="p-2 rounded-full bg-purple-600 text-white hover:scale-105 transition">
+          <button
+            className="p-2 rounded-full bg-purple-600 text-white hover:scale-105 transition"
+            aria-label="Edit profile"
+          >
             <Pencil size={18} />
           </button>
         </div>
@@ -35,7 +40,7 @@ export default function Profile() {
         </p>
 
         {/* Stats */}
-        <div className="mt-6 grid grid-cols-3 gap-4 text-center">
+        <div className="mt-6 grid grid-cols-3 gap-3 sm:gap-4 text-center">
           <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-xl">
             <p className="font-bold text-gray-900 dark:text-white">120</p>
             <p className="text-xs text-gray-500">Projects</p>

@@ -27,26 +27,36 @@ const CampaignList = ({ limit }) => {
       </p>
     );
 
-    const displayedCampaigns = Array.isArray(campaigns)
-  ? (limit ? campaigns.slice(0, limit) : campaigns)
-  : [];
+  const displayedCampaigns = Array.isArray(campaigns)
+    ? limit
+      ? campaigns.slice(0, limit)
+      : campaigns
+    : [];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-0 mt-10 font-inter">
-      <h2 className="text-3xl font-extrabold text-purple-700 dark:text-purple-400 mb-8">
-        Campaigns
-      </h2>
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-10 font-inter">
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-7">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-purple-700 dark:text-purple-400">
+          Campaigns
+        </h2>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          Showing {displayedCampaigns.length} campaign
+          {displayedCampaigns.length === 1 ? "" : "s"}
+        </p>
+      </div>
 
       {displayedCampaigns.length === 0 ? (
-        <p className="text-gray-500 dark:text-gray-400 text-center text-lg">
-          No campaigns found
-        </p>
+        <div className="rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 p-10 text-center">
+          <p className="text-gray-500 dark:text-gray-400 text-lg">
+            No campaigns found
+          </p>
+        </div>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {displayedCampaigns.map((c) => (
             <motion.div
               key={c._id}
-              className="bg-white dark:bg-[#0f0f0f] mb-10 rounded-3xl shadow-lg p-6 flex flex-col justify-between border border-gray-200 dark:border-gray-700"
+              className="bg-white dark:bg-[#0f0f0f] rounded-3xl shadow-lg p-5 sm:p-6 flex flex-col justify-between border border-gray-200 dark:border-gray-700"
               variants={cardVariants}
               initial="hidden"
               animate="visible"
@@ -57,8 +67,8 @@ const CampaignList = ({ limit }) => {
                 <h3 className="text-purple-700 dark:text-purple-400 font-bold text-2xl truncate">
                   {c.campaignName || c.name}
                 </h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm mt-1 truncate">
-                  {c.client}
+                <p className="text-gray-500 dark:text-gray-400 text-sm mt-1 truncate font-medium">
+                  {c.client || "Unknown client"}
                 </p>
               </div>
 
@@ -101,7 +111,7 @@ const CampaignList = ({ limit }) => {
                       Impressions
                     </span>
                   </div>
-                  <span className="font-semibold">{c.impressions}</span>
+                  <span className="font-semibold">{c.impressions ?? 0}</span>
                 </div>
 
                 <div className="flex justify-between items-center bg-gray-50 dark:bg-black p-3 rounded-xl">
@@ -111,14 +121,14 @@ const CampaignList = ({ limit }) => {
                       Clicks
                     </span>
                   </div>
-                  <span className="font-semibold">{c.clicks}</span>
+                  <span className="font-semibold">{c.clicks ?? 0}</span>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 
