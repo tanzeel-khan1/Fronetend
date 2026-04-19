@@ -27,7 +27,9 @@ const CampaignList = ({ limit }) => {
       </p>
     );
 
-  const displayedCampaigns = limit ? campaigns.slice(0, limit) : campaigns;
+    const displayedCampaigns = Array.isArray(campaigns)
+  ? (limit ? campaigns.slice(0, limit) : campaigns)
+  : [];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-0 mt-10 font-inter">
