@@ -10,8 +10,8 @@ const Home = () => {
   return (
     <div className="dark:bg-black min-h-screen">
       <Topbar days={days} onDaysChange={setDays} />
-      <div className="m-10">
-        <CampaignChart days={days} />
+      <div className="m-4 sm:m-6 lg:m-10">
+        <CampaignChart days={days} setDays={setDays} />
       </div>
       <CampaignList limit={3} />
     </div>

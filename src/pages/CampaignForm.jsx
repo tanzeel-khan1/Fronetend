@@ -51,7 +51,7 @@ const CampaignForm = () => {
 
   return (
     <motion.div
-      className="max-w-5xl mx-auto mt-12 p-10 bg-white dark:bg-gray-900 rounded-3xl shadow-xl font-inter"
+      className="max-w-5xl mx-auto mt-6 sm:mt-10 lg:mt-12 p-4 sm:p-6 lg:p-10 bg-white dark:bg-gray-900 rounded-3xl shadow-xl font-inter"
       variants={formVariants}
       initial="hidden"
       animate="visible"
@@ -102,7 +102,7 @@ const CampaignForm = () => {
 
       {createdCampaign && (
         <motion.div
-          className="bg-gray-50 dark:bg-gray-800 p-8 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 mt-10"
+          className="bg-gray-50 dark:bg-gray-800 p-4 sm:p-6 lg:p-8 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 mt-8 sm:mt-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

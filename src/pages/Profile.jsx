@@ -3,9 +3,8 @@ import { Settings, Pencil } from "lucide-react";
 
 export default function Profile() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-black flex items-center justify-center p-6">
-      {/* Profile Card */}
-      <div className="relative bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-2xl rounded-3xl p-8 w-full max-w-sm text-center border border-gray-200 dark:border-gray-700 transition">
+    <div className="w-full">
+      <div className="relative bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-2xl rounded-3xl p-6 sm:p-8 w-full max-w-sm sm:max-w-md mx-auto text-center border border-gray-200 dark:border-gray-700 transition">
         {/* Top Actions */}
         <div className="absolute top-4 right-4 flex gap-2">
           <button className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:scale-105 transition">
