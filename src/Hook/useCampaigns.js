@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 const API_URL = "https://backend-three-alpha-69.vercel.app/api/campaigns";
 
 const useCampaigns = () => {
-  const [campaigns, setCampaigns] = useState([]); // ✅ always array
+  const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 

@@ -4,8 +4,8 @@ export default function Topbar({ days, onDaysChange }) {
   return (
     <header className="sticky top-0 z-20 border-b border-gray-200/70 dark:border-gray-800 bg-gray-100/90 dark:bg-black/90 backdrop-blur-sm text-gray-900 dark:text-gray-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-lg sm:text-xl font-semibold tracking-tight">
+        <div className="mr-20">
+          <h1 className="text-lg sm:text-xl font-semibold tracking-tight ">
             Campaign Dashboard
           </h1>
           <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
