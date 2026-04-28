@@ -56,7 +56,7 @@ const CampaignList = ({ limit }) => {
           {displayedCampaigns.map((c) => (
             <motion.div
               key={c._id}
-              className="bg-white dark:bg-[#0f0f0f] rounded-3xl shadow-lg p-5 sm:p-6 flex flex-col justify-between border border-gray-200 dark:border-gray-700"
+              className="bg-white dark:bg-[#0f0f0f] rounded-3xl shadow-lg p-5 sm:p-6 flex mb-10 flex-col justify-between border border-gray-200 dark:border-gray-700"
               variants={cardVariants}
               initial="hidden"
               animate="visible"
