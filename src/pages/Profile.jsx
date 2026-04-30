@@ -3,17 +3,17 @@ import { Settings, Pencil } from "lucide-react";
 export default function Profile() {
   return (
     <div className="w-full">
-      <div className="relative bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-2xl rounded-3xl p-6 sm:p-8 w-full max-w-sm sm:max-w-md mx-auto text-center border border-gray-200 dark:border-gray-700 transition">
+      <div className="relative mx-auto w-full max-w-2xl text-center transition">
         {/* Top Actions */}
         <div className="absolute top-4 right-4 flex gap-2">
           <button
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:scale-105 transition"
+            className="grid h-9 w-9 place-items-center rounded-lg bg-slate-100 text-slate-600 transition hover:bg-slate-200 dark:bg-white/10 dark:text-slate-200 dark:hover:bg-white/15"
             aria-label="Profile settings"
           >
             <Settings size={18} />
           </button>
           <button
-            className="p-2 rounded-full bg-purple-600 text-white hover:scale-105 transition"
+            className="grid h-9 w-9 place-items-center rounded-lg bg-slate-950 text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
             aria-label="Edit profile"
           >
             <Pencil size={18} />
@@ -25,38 +25,38 @@ export default function Profile() {
           <img
             src="https://i.pravatar.cc/150?img=12"
             alt="profile"
-            className="w-28 h-28 rounded-full mx-auto border-4 border-purple-500 shadow-lg"
+            className="mx-auto h-28 w-28 rounded-full border-4 border-white object-cover shadow-xl ring-4 ring-teal-500/20 dark:border-slate-900"
           />
-          <span className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
+          <span className="absolute bottom-1 right-1 h-4 w-4 rounded-full border-2 border-white bg-emerald-500 dark:border-slate-900"></span>
         </div>
 
         {/* Name */}
-        <h2 className="text-2xl font-semibold mt-5 text-gray-900 dark:text-white">
+        <h2 className="mt-5 text-2xl font-bold tracking-tight text-slate-950 dark:text-white">
           Naseem Khan
         </h2>
 
-        <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
+        <p className="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">
           Full Stack Developer
         </p>
 
         {/* Stats */}
         <div className="mt-6 grid grid-cols-3 gap-3 sm:gap-4 text-center">
-          <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-xl">
-            <p className="font-bold text-gray-900 dark:text-white">120</p>
-            <p className="text-xs text-gray-500">Projects</p>
+          <div className="rounded-lg border border-slate-200/70 bg-white/70 p-3 dark:border-white/10 dark:bg-white/5">
+            <p className="font-bold text-slate-950 dark:text-white">120</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Projects</p>
           </div>
-          <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-xl">
-            <p className="font-bold text-gray-900 dark:text-white">5K</p>
-            <p className="text-xs text-gray-500">Clients</p>
+          <div className="rounded-lg border border-slate-200/70 bg-white/70 p-3 dark:border-white/10 dark:bg-white/5">
+            <p className="font-bold text-slate-950 dark:text-white">5K</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Clients</p>
           </div>
-          <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-xl">
-            <p className="font-bold text-gray-900 dark:text-white">3+ yrs</p>
-            <p className="text-xs text-gray-500">Experience</p>
+          <div className="rounded-lg border border-slate-200/70 bg-white/70 p-3 dark:border-white/10 dark:bg-white/5">
+            <p className="font-bold text-slate-950 dark:text-white">3+ yrs</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Experience</p>
           </div>
         </div>
 
         {/* Bio */}
-        <p className="mt-6 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-300">
           Building premium web experiences with modern technologies like React,
           Node.js, and Tailwind CSS. Focused on performance, design, and user
           experience.
