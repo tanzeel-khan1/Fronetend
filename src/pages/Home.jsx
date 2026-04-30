@@ -8,10 +8,10 @@ const Home = () => {
   const [days, setDays] = useState(7);
 
   return (
-    <div className="dark:bg-black min-h-screen">
+    <div className="min-h-screen pb-10">
       <Topbar days={days} onDaysChange={setDays} />
-      <div className="m-4 sm:m-6 lg:m-10">
-        <CampaignChart days={days} />
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <CampaignChart days={days} setDays={setDays} />
       </div>
       <CampaignList limit={3} />
     </div>
