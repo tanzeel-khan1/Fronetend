@@ -29,11 +29,11 @@ const formatLabel = (d) =>
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="backdrop-blur-xl bg-white/80 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2 shadow-xl">
-        <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">
+      <div className="rounded-lg border border-slate-200 bg-white/90 px-3 py-2 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/90">
+        <p className="mb-1 text-xs text-slate-500 dark:text-slate-400">
           {label}
         </p>
-        <p className="text-sm font-semibold text-indigo-500">
+        <p className="text-sm font-semibold text-teal-600 dark:text-teal-300">
           {payload[0].value} campaigns
         </p>
       </div>
@@ -87,7 +87,7 @@ export default function CampaignChart({ days, setDays }) {
           .reverse();
 
         if (!cancelled) setData(series);
-      } catch (e) {
+      } catch {
         if (!cancelled) setError("Failed to load chart data");
       } finally {
         if (!cancelled) setLoading(false);
@@ -115,54 +115,58 @@ export default function CampaignChart({ days, setDays }) {
   const tickInterval = days > 30 ? Math.ceil(days / 15) : 0;
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl shadow-xl p-4 sm:p-6 transition-all">
+    <div className="premium-panel relative overflow-hidden rounded-lg p-4 transition-all sm:p-6">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-r from-teal-400/12 via-indigo-500/10 to-transparent" />
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+      <div className="relative mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-1">
+          <p className="mb-1 text-xs font-semibold uppercase tracking-[0.22em] text-teal-600 dark:text-teal-300">
             Campaign Performance
           </p>
-          <p className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+          <p className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
             {total.toLocaleString()}
+          </p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+            Campaigns created in the selected range
           </p>
         </div>
 
-        <span className="self-start sm:self-auto text-xs px-3 py-1 rounded-full border border-indigo-300 dark:border-indigo-700 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
+        <span className="self-start rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-bold text-teal-700 dark:border-teal-500/20 dark:bg-teal-500/10 dark:text-teal-300 sm:self-auto">
           Last {days} Days
         </span>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+      <div className="relative mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
         {[
           {
             label: "Total Campaigns",
             value: total.toLocaleString(),
             sub: `Avg ${avg}/day`,
-            subColor: "text-green-500",
+            subColor: "text-emerald-600 dark:text-emerald-300",
           },
           {
             label: "Peak Day",
-            value: peak?.campaigns ?? "—",
+            value: peak?.campaigns ?? "-",
             sub: peak?.day ?? "",
-            subColor: "text-green-500",
+            subColor: "text-indigo-600 dark:text-indigo-300",
           },
           {
             label: "Min Activity",
-            value: minD?.campaigns ?? "—",
+            value: minD?.campaigns ?? "-",
             sub: minD?.day ?? "",
-            subColor: "text-red-500",
+            subColor: "text-rose-600 dark:text-rose-300",
           },
         ].map((s) => (
           <div
             key={s.label}
-            className="group rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md p-4 transition hover:shadow-lg hover:-translate-y-1"
+            className="rounded-lg border border-slate-200/70 bg-white/70 p-4 shadow-sm backdrop-blur-md transition hover:-translate-y-0.5 hover:shadow-lg dark:border-white/10 dark:bg-white/5"
           >
-            <div className="text-[11px] text-zinc-500 uppercase tracking-wide mb-1">
+            <div className="mb-1 text-[11px] font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
               {s.label}
             </div>
-            <div className="text-lg sm:text-xl font-semibold">
+            <div className="text-lg font-bold text-slate-950 dark:text-white sm:text-xl">
               {s.value}
             </div>
             <div className={`text-xs mt-1 ${s.subColor}`}>
@@ -173,16 +177,16 @@ export default function CampaignChart({ days, setDays }) {
       </div>
 
       {/* Day Selector */}
-      <div className="flex flex-wrap gap-2 mb-5">
+      <div className="relative mb-5 flex flex-wrap gap-2">
         {DAY_OPTIONS.map((d) => (
           <button
             key={d}
             onClick={() => setDays?.(d)}
-            className={`relative text-xs px-4 py-1.5 rounded-full border transition-all duration-200
+            className={`relative rounded-full border px-4 py-1.5 text-xs font-bold transition-all duration-200
             ${
               days === d
-                ? "bg-indigo-500 text-white border-indigo-500 shadow-md scale-105"
-                : "border-zinc-300 dark:border-zinc-700 text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                ? "scale-105 border-slate-950 bg-slate-950 text-white shadow-md dark:border-white dark:bg-white dark:text-slate-950"
+                : "border-slate-300 text-slate-500 hover:bg-slate-100 dark:border-white/10 dark:text-slate-400 dark:hover:bg-white/10"
             }`}
           >
             {d}D
@@ -191,13 +195,13 @@ export default function CampaignChart({ days, setDays }) {
       </div>
 
       {/* Chart */}
-      <div className="w-full h-[220px] sm:h-[260px]">
+      <div className="relative h-[220px] w-full sm:h-[280px]">
         {error ? (
-          <div className="h-full grid place-items-center text-sm text-red-500">
+          <div className="grid h-full place-items-center text-sm text-rose-500">
             {error}
           </div>
         ) : loading ? (
-          <div className="h-full grid place-items-center text-sm text-zinc-500">
+          <div className="grid h-full place-items-center text-sm text-slate-500">
             Loading...
           </div>
         ) : (
@@ -205,8 +209,8 @@ export default function CampaignChart({ days, setDays }) {
             <AreaChart data={data}>
               <defs>
                 <linearGradient id="indigoGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#6366f1" stopOpacity={0.4} />
-                  <stop offset="100%" stopColor="#6366f1" stopOpacity={0} />
+                  <stop offset="0%" stopColor="#14b8a6" stopOpacity={0.36} />
+                  <stop offset="100%" stopColor="#14b8a6" stopOpacity={0} />
                 </linearGradient>
               </defs>
 
@@ -229,7 +233,7 @@ export default function CampaignChart({ days, setDays }) {
               <Area
                 type="monotone"
                 dataKey="campaigns"
-                stroke="#6366f1"
+                stroke="#14b8a6"
                 strokeWidth={2.5}
                 fill="url(#indigoGrad)"
                 dot={days <= 30 ? { r: 3 } : false}
