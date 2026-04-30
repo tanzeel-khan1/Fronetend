@@ -1,14 +1,14 @@
 const Loader = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen   transition-colors duration-500">
+    <div className="flex min-h-full flex-col items-center justify-center py-12 transition-colors duration-500">
       {/* Spinner */}
-      <div className="relative w-20 h-20 mb-6">
-        <div className="absolute inset-0 rounded-full border-4 border-purple-300 opacity-30"></div>
-        <div className="absolute inset-0 rounded-full border-4 border-t-purple-600 animate-spin"></div>
+      <div className="relative mb-5 h-14 w-14">
+        <div className="absolute inset-0 rounded-full border-4 border-teal-300 opacity-30"></div>
+        <div className="absolute inset-0 animate-spin rounded-full border-4 border-transparent border-t-teal-600"></div>
       </div>
 
       {/* Text */}
-      <h1 className="text-2xl font-semibold text-purple-600 dark:text-purple-400 tracking-wide animate-pulse">
+      <h1 className="animate-pulse text-sm font-bold uppercase tracking-[0.22em] text-teal-600 dark:text-teal-300">
         Loading...
       </h1>
     </div>

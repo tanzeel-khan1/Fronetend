@@ -8,11 +8,11 @@ const MainLayout = ({ children }) => {
   }, []);
 
   return (
-    <div className="flex min-h-screen text-black dark:text-white transition-colors duration-300">
+    <div className="min-h-screen text-slate-950 dark:text-slate-100 transition-colors duration-300">
       <Sidebar />
 
-      <div className="flex flex-col flex-1 pt-16 md:pt-0 md:ml-64 dark:bg-black">
-        <main className=" dark:bg-black">{children}</main>
+      <div className="flex min-h-screen flex-col pt-16 md:pt-0 md:ml-72">
+        <main className="min-h-screen">{children}</main>
       </div>
     </div>
   );

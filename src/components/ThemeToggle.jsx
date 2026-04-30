@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
+  const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme) {
-      setDarkMode(savedTheme === "dark");
-    } else {
-      const systemDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-      setDarkMode(systemDark);
+      return savedTheme === "dark";
     }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
   }, []);
 
   // Apply theme
