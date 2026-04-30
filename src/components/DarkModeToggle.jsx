@@ -4,14 +4,14 @@ import { Sun, Moon } from "lucide-react";
 const DarkModeToggle = () => {
   const getCurrentMode = () =>
     document.documentElement.classList.contains("dark");
-  const [darkMode, setDarkMode] = useState(getCurrentMode);
-
-  useEffect(() => {
+  const [darkMode, setDarkMode] = useState(() => {
     const stored = localStorage.getItem("darkMode");
     const isDark = stored === null ? getCurrentMode() : stored === "true";
     document.documentElement.classList.toggle("dark", isDark);
-    setDarkMode(isDark);
+    return isDark;
+  });
 
+  useEffect(() => {
     const syncMode = () => setDarkMode(getCurrentMode());
     window.addEventListener("storage", syncMode);
     window.addEventListener("theme-changed", syncMode);
@@ -34,12 +34,10 @@ const DarkModeToggle = () => {
     <button
       onClick={toggleDarkMode}
       aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-      className="relative flex items-center w-14 h-8 rounded-full p-1 
-                 bg-gray-300 dark:bg-gray-800 transition-all duration-300 cursor-pointer"
+      className="relative flex h-8 w-14 items-center rounded-full bg-slate-200 p-1 shadow-inner transition-all duration-300 dark:bg-white/10"
     >
       <div
-        className={`w-6 h-6 rounded-full bg-white shadow-md flex items-center justify-center
-        transform transition-all duration-300 cursor-pointer
+        className={`flex h-6 w-6 transform items-center justify-center rounded-full bg-white shadow-md transition-all duration-300
         ${darkMode ? "translate-x-6" : "translate-x-0"}`}
       >
         {darkMode ? (

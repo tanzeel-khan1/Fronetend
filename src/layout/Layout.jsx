@@ -1,12 +1,9 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
 
 const AdminLayout = () => {
   return (
-    <div className="min-h-screen bg-white  dark:bg-black">
-      <Sidebar />
-
-      <main className="min-h-screen bg-white dark:bg-black ">
+    <div className="min-h-screen">
+      <main className="min-h-screen">
         <Outlet />
       </main>
     </div>
